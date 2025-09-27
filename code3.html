@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>School Admission Portal</title>
+  <link rel="stylesheet" href="code4.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  
+  <!-- LOGIN / REGISTER PAGE -->
+   
+  <div id="auth-page" class="page active">
+    <div class="header-row">
+      <h1 class="school-name">Canwas Public School<h1><div>
+    <div class="auth-container">
+      <h2 id="auth-title">Login</h2>
+      <form id="auth-form" class="form">
+        <div id="name-group" class="form-group hidden">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Full Name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" placeholder="Password" required minlength="6" />
+        </div>
+        <button type="submit" class="btn-primary" id="auth-submit">Login</button>
+      </form>
+      <p id="toggle-text">Don't have an account? <a href="#" id="toggle-link">Register here</a></p>
+    </div>
+  </div>
+
+<div class="progress-bar-container">
+  <div class="progress-bar-fill" style="width: 40%;"></div>
+</div>
+
+
+<!-- HOME PAGE -->
+<div id="home-page" class="page hidden">
+  <header class="header">
+    <div class="header-row">
+      <h1 class="school-name">Canwas Public School              
+      <button id="logout-btn" class="btn-logout">Logout</button></h1>
+      <div class="nav-bar">
+        <button class="nav-btn" id="dashboard-btn">Dashboard</button>
+        <button class="nav-btn" id="visit-school-btn">Visit School</button>
+        <button class="nav-btn" id="select-standard-btn">Select Standard</button>
+      </div>
+      
+      
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 class="welcome">Welcome, <span id="user-name"></span></h2>
+  </main>
+</div>
+
+
+ 
+  <!-- DASHBOARD PAGE -->
+  <div id="dashboard-page" class="page hidden container">
+    <header class="sub-header">
+      <h6>Dashboard</h6>
+      <button class="btn-back" id="dashboard-back">Back</button>
+    </header>
+    <section>
+      <h3>User Profile</h3>
+      <p><strong>Name:</strong> <span id="dash-name"></span></p>
+      <p><strong>Email:</strong> <span id="dash-email"></span></p>
+      <h3>Feedback & Support</h3>
+      <form id="feedback-form" class="form">
+        <label for="feedback-email">Email *</label>
+        <input type="email" id="feedback-email" placeholder="Your email" required />
+        <label for="feedback-summary">Summary *</label>
+        <textarea id="feedback-summary" rows="4" placeholder="Your feedback or support query" required></textarea>
+        <button type="submit" class="btn-primary">Send Feedback</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- VISIT SCHOOL PAGE -->
+  <div id="visit-school-page" class="page hidden container">
+    <header class="sub-header">
+      <h6>Schedule a School Visit</h6>
+      <button class="btn-back" id="visit-back">Back</button>
+    </header>
+    <form id="visit-form" class="form">
+      <label for="visitor-name">Name *</label>
+      <input type="text" id="visitor-name" placeholder="Your full name" required />
+      <label for="visitor-mobile">Mobile Number *</label>
+      <input type="tel" id="visitor-mobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" required />
+      <label for="visit-date">Select Date *</label>
+      <input type="date" id="visit-date" required />
+      <label for="visit-time">Select Time *</label>
+      <select id="visit-time" required>
+        <option value="">-- Select Time --</option>
+        <option value="09:00">09:00 AM</option>
+        <option value="11:00">11:00 AM</option>
+        <option value="14:00">02:00 PM</option>
+        <option value="16:00">04:00 PM</option>
+      </select>
+      <button type="submit" class="btn-primary">Schedule Visit</button>
+    </form>
+  </div>
+
+  <!-- SELECT STANDARD PAGE -->
+  <div id="select-standard-page" class="page hidden container">
+    <header class="sub-header">
+      <h6>Select Standard</h6>
+      <button class="btn-back" id="standard-back">Back</button>
+    </header>
+    <form id="standard-form" class="form">
+      <label for="standard-select">Choose Standard *</label>
+      <select id="standard-select" required>
+        <option value="">-- Select --</option>
+      </select>
+      <button type="submit" class="btn-primary">Next</button>
+    </form>
+  </div>
+
+  <!-- DETAILS & DOCUMENTS PAGE -->
+  <div id="details-documents-page" class="page hidden container">
+    <header class="sub-header">
+      <h2>Student & Parent Details + Documents</h2>
+      <button class="btn-back" id="details-back">Back</button>
+    </header>
+    <form id="details-form" class="form" enctype="multipart/form-data">
+      <label for="student-name">Student Name *</label>
+      <input type="text" id="student-name" placeholder="Full name" required />
+      <label for="parent-name">Parent Name *</label>
+      <input type="text" id="parent-name" placeholder="Full name" required />
+      <label for="phone">Phone Number *</label>
+      <input type="tel" id="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" required />
+      <label for="aadhaar-student">Student Aadhaar (Encrypted) *</label>
+      <input type="text" id="aadhaar-student" placeholder="Encrypted Aadhaar" minlength="12" maxlength="12" required />
+      <label for="aadhaar-parent">Parent Aadhaar (Encrypted) *</label>
+      <input type="text" id="aadhaar-parent" placeholder="Encrypted Aadhaar" minlength="12" maxlength="12" required />
+      <label for="student-photo">Student Photo (JPG/PNG, max 5MB) *</label>
+      <input type="file" id="student-photo" accept=".jpg,.jpeg,.png" required />
+      <label for="birth-certificate">Birth Certificate (PDF/JPG/PNG, max 5MB) *</label>
+      <input type="file" id="birth-certificate" accept=".pdf,.jpg,.jpeg,.png" required />
+      <label for="leaving-certificate">Leaving Certificate (PDF/JPG/PNG, max 5MB) *</label>
+      <input type="file" id="leaving-certificate" accept=".pdf,.jpg,.jpeg,.png" required />
+      <button type="submit" class="btn-primary">Next</button>
+    </form>
+  </div>
+
+  <!-- PAYMENT PAGE -->
+  <div id="payment-page" class="page hidden container">
+    <header class="sub-header">
+      <h2>Payment</h2>
+      <button class="btn-back" id="payment-back">Back</button>
+    </header>
+    <form id="payment-form" class="form">
+      <p><strong>Standard Selected:</strong> <span id="payment-standard"></span></p>
+      <label for="payment-method">Select Payment Method *</label>
+      <select id="payment-method" required>
+        <option value="">-- Select --</option>
+        <option value="Google Pay">Google Pay</option>
+        <option value="PhonePe">PhonePe</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+        <option value="UPI">UPI</option>
+      </select>
+      <button type="submit" class="btn-primary">Pay</button>
+    </form>
+  </div>
+
+  <!-- PAYMENT CONFIRMATION PAGE -->
+  <div id="payment-confirmation-page" class="page hidden container">
+    <header class="sub-header">
+      <h2>Payment Confirmation</h2>
+      <button class="btn-back" id="confirmation-back">Back to Home</button>
+    </header>
+    <section class="confirmation-content">
+      <h3>Payment Details</h3>
+      <p><strong>Standard:</strong> <span id="conf-standard"></span></p>
+      <p><strong>Payment Method:</strong> <span id="conf-method"></span></p>
+      <p><strong>Transaction ID:</strong> <span id="conf-transaction"></span></p>
+      <div class="confirmation-message">
+        <p>Thank you for your payment! Your admission application is being processed.</p>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // Utility to show/hide pages
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+      document.getElementById(pageId).classList.remove('hidden');
+    }
+
+    // Elements
+    const authPage = document.getElementById('auth-page');
+    const homePage = document.getElementById('home-page');
+    const dashboardPage = document.getElementById('dashboard-page');
+    const visitSchoolPage = document.getElementById('visit-school-page');
+    const selectStandardPage = document.getElementById('select-standard-page');
+    const detailsDocumentsPage = document.getElementById('details-documents-page');
+    const paymentPage = document.getElementById('payment-page');
+    const paymentConfirmationPage = document.getElementById('payment-confirmation-page');
+
+    const authForm = document.getElementById('auth-form');
+    const authTitle = document.getElementById('auth-title');
+    const toggleText = document.getElementById('toggle-text');
+    const toggleLink = document.getElementById('toggle-link');
+    const nameGroup = document.getElementById('name-group');
+    const authSubmit = document.getElementById('auth-submit');
+    const logoutBtn = document.getElementById('logout-btn');
+
+    const userNameSpan = document.getElementById('user-name');
+    const dashName = document.getElementById('dash-name');
+    const dashEmail = document.getElementById('dash-email');
+
+    const feedbackForm = document.getElementById('feedback-form');
+    const visitForm = document.getElementById('visit-form');
+    const standardForm = document.getElementById('standard-form');
+    const standardSelect = document.getElementById('standard-select');
+    const detailsForm = document.getElementById('details-form');
+    const paymentForm = document.getElementById('payment-form');
+
+    const paymentStandardSpan = document.getElementById('payment-standard');
+    const confStandard = document.getElementById('conf-standard');
+    const confMethod = document.getElementById('conf-method');
+    const confTransaction = document.getElementById('conf-transaction');
+
+    // Back buttons
+    document.getElementById('dashboard-back').addEventListener('click', () => showPage('home-page'));
+    document.getElementById('visit-back').addEventListener('click', () => showPage('home-page'));
+    document.getElementById('standard-back').addEventListener('click', () => showPage('home-page'));
+    document.getElementById('details-back').addEventListener('click', () => showPage('select-standard-page'));
+    document.getElementById('payment-back').addEventListener('click', () => showPage('details-documents-page'));
+    document.getElementById('confirmation-back').addEventListener('click', () => {
+      showPage('home-page');
+      clearPaymentConfirmation();
+    });
+
+    // Toggle login/register
+    let isLogin = true;
+    toggleLink.addEventListener('click', e => {
+      e.preventDefault();
+      isLogin = !isLogin;
+      if (isLogin) {
+        authTitle.textContent = 'Login';
+        authSubmit.textContent = 'Login';
+        toggleText.innerHTML = `Don't have an account? <a href="#" id="toggle-link">Register here</a>`;
+        nameGroup.classList.add('hidden');
+        document.getElementById('name').required = false;
+      } else {
+        authTitle.textContent = 'Register';
+        authSubmit.textContent = 'Register';
+        toggleText.innerHTML = `Already have an account? <a href="#" id="toggle-link">Login here</a>`;
+        nameGroup.classList.remove('hidden');
+        document.getElementById('name').required = true;
+      }
+      // Reattach event listener for new toggle link
+      document.getElementById('toggle-link').addEventListener('click', e => {
+        e.preventDefault();
+        toggleLink.click();
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+  // Elements
+  const loginContainer = document.querySelector("#auth-section .form-container");
+  const registerContainer = document.querySelector("#register-container");
+  const showRegisterLink = document.querySelector("#show-register");
+  const showLoginLink = document.querySelector("#show-login");
+  const dashboard = document.getElementById("dashboard");
+  const applicationSection = document.getElementById("application-section");
+  const visitSection = document.getElementById("visit-section");
+
+  const progressBar = document.getElementById("progress");
+  const steps = document.querySelectorAll(".step");
+
+  let currentStep = 1;
+
+  // -------------------
+  // Toggle Login/Register
+  // -------------------
+  showRegisterLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    loginContainer.classList.add("hidden");
+    registerContainer.classList.remove("hidden");
+  });
+
+  showLoginLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    registerContainer.classList.add("hidden");
+    loginContainer.classList.remove("hidden");
+  });
+
+  // -------------------
+  // Fake Login/Register
+  // -------------------
+  document.getElementById("login-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.getElementById("auth-section").classList.add("hidden");
+    dashboard.classList.remove("hidden");
+  });
+
+  document.getElementById("register-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.getElementById("auth-section").classList.add("hidden");
+    dashboard.classList.remove("hidden");
+  });
+
+  // -------------------
+  // Dashboard buttons
+  // -------------------
+  document.getElementById("start-application").addEventListener("click", () => {
+    dashboard.classList.add("hidden");
+    applicationSection.classList.remove("hidden");
+    showStep(1);
+  });
+
+  document.getElementById("schedule-visit").addEventListener("click", () => {
+    dashboard.classList.add("hidden");
+    visitSection.classList.remove("hidden");
+  });
+
+  // -------------------
+  // Visit Form
+  // -------------------
+  document.getElementById("visit-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Visit scheduled successfully!");
+    visitSection.classList.add("hidden");
+    dashboard.classList.remove("hidden");
+  });
+
+  // -------------------
+  // Application Form Steps
+  // -------------------
+  function showStep(step) {
+    steps.forEach((s, index) => {
+      if (index === step - 1) {
+        s.classList.remove("hidden");
+      } else {
+        s.classList.add("hidden");
+      }
+    });
+    updateProgress(step);
+    currentStep = step;
+  }
+
+  function updateProgress(step) {
+    const percent = ((step - 1) / (steps.length - 1)) * 100;
+    progressBar.style.width = percent + "%";
+  }
+
+  // Step 1 → Step 2
+  document.getElementById("standard-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    showStep(2);
+  });
+
+  // Step 2 → Step 3
+  document.getElementById("details-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    showStep(3);
+  });
+
+  // Step 3 → Step 4
+  document.getElementById("payment-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    showStep(4);
+    progressBar.style.width = "100%";
+  });
+});
+
+
+    // Store user data in localStorage (simulate backend)
+    function saveUser (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
+    function getUser () {
+      return JSON.parse(localStorage.getItem('user'));
+    }
+    function clearUser () {
+      localStorage.removeItem('user');
+    }
+
+    // On page load, check if user logged in
+    window.onload = () => {
+      const user = getUser ();
+      if (user) {
+        loadHomePage(user);
+      } else {
+        showPage('auth-page');
+      }
+      // Populate standard options
+      for(let i=1; i<=12; i++) {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = i;
+        standardSelect.appendChild(option);
+      }
+      // Set min date for visit date input
+      const visitDateInput = document.getElementById('visit-date');
+      if (visitDateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        visitDateInput.setAttribute('min', today);
+      }
+    };
+
+    // Auth form submit
+    authForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const name = document.getElementById('name').value.trim();
+
+      if (!email || !password || (!isLogin && !name)) {
+        alert('Please fill all required fields.');
+        return;
+      }
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters.');
+        return;
+      }
+
+      // Simulate registration/login by saving user locally
+      const user = { name: isLogin ? (getUser ()?.name || 'User ') : name, email, password };
+      saveUser (user);
+      loadHomePage(user);
+    });
+
+    // Load home page with user info
+    function loadHomePage(user) {
+      userNameSpan.textContent = user.name;
+      dashName.textContent = user.name;
+      dashEmail.textContent = user.email;
+      showPage('home-page');
+    }
+
+    // Logout
+    logoutBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to logout?')) {
+        clearUser ();
+        showPage('auth-page');
+        authForm.reset();
+        if (!isLogin) toggleLink.click();
+      }
+    });
+
+    // Home page buttons
+    document.getElementById('dashboard-btn').addEventListener('click', () => showPage('dashboard-page'));
+    document.getElementById('visit-school-btn').addEventListener('click', () => showPage('visit-school-page'));
+    document.getElementById('select-standard-btn').addEventListener('click', () => showPage('select-standard-page'));
+
+    // Feedback form submit (dashboard)
+    feedbackForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('feedback-email').value.trim();
+      const summary = document.getElementById('feedback-summary').value.trim();
+      if (!email || !summary) {
+        alert('Please fill all feedback fields.');
+        return;
+      }
+      alert('Feedback sent! Thank you.');
+      feedbackForm.reset();
+    });
+
+    // Visit form submit
+    visitForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('visitor-name').value.trim();
+      const mobile = document.getElementById('visitor-mobile').value.trim();
+      const date = document.getElementById('visit-date').value;
+      const time = document.getElementById('visit-time').value;
+      if (!name || !mobile.match(/^\d{10}$/) || !date || !time) {
+        alert('Please fill all visit scheduling fields correctly.');
+        return;
+      }
+      alert(`Visit scheduled for ${name} on ${date} at ${time}. Confirmation will be sent.`);
+      visitForm.reset();
+      showPage('home-page');
+    });
+// progress baar settinds dynamically
+
+    function updateProgress(step) {
+  const progressFill = document.querySelector('.progress-bar-fill');
+  const steps = 5; // total steps: login, details, visit, payment, confirmation
+  progressFill.style.width = `${(step/steps)*100}%`;
+}
+
+
+    // Standard form submit
+    standardForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const standard = standardSelect.value;
+      if (!standard) {
+        alert('Please select a standard.');
+        return;
+      }
+      sessionStorage.setItem('selectedStandard', standard);
+      showPage('details-documents-page');
+    });
+
+    // Details & Documents form submit
+    detailsForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const studentName = document.getElementById('student-name').value.trim();
+      const parentName = document.getElementById('parent-name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const aadhaarStudent = document.getElementById('aadhaar-student').value.trim();
+      const aadhaarParent = document.getElementById('aadhaar-parent').value.trim();
+      const studentPhoto = document.getElementById('student-photo').files[0];
+      const birthCert = document.getElementById('birth-certificate').files[0];
+      const leavingCert = document.getElementById('leaving-certificate').files[0];
+
+      if (!studentName || !parentName || !phone.match(/^\d{10}$/) ||
+          
+                aadhaarParent.length !== 12 ||
+          !studentPhoto || !birthCert || !leavingCert) {
+        alert('Please fill all required fields correctly and upload all documents.');
+        return;
+      }
+
+      // Validate file sizes (max 5MB)
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (studentPhoto.size > maxSize || birthCert.size > maxSize || leavingCert.size > maxSize) {
+        alert('Each file must be less than 5MB.');
+        return;
+      }
+
+      // Validate file types
+      const allowedImageTypes = ['image/jpeg', 'image/png'];
+      const allowedDocTypes = ['application/pdf', 'image/jpeg', 'image/png'];
+
+      if (!allowedImageTypes.includes(studentPhoto.type)) {
+        alert('Student photo must be JPG or PNG.');
+        return;
+      }
+      if (!allowedDocTypes.includes(birthCert.type)) {
+        alert('Birth certificate must be PDF, JPG, or PNG.');
+        return;
+      }
+      if (!allowedDocTypes.includes(leavingCert.type)) {
+        alert('Leaving certificate must be PDF, JPG, or PNG.');
+        return;
+      }
+
+      // Save details in sessionStorage for demo (replace with backend API calls)
+      const applicationData = {
+        studentName,
+        parentName,
+        phone,
+        aadhaarStudent,
+        aadhaarParent,
+        // For files, just save file names (in real app upload to server)
+        studentPhotoName: studentPhoto.name,
+        birthCertName: birthCert.name,
+        leavingCertName: leavingCert.name,
+      };
+      sessionStorage.setItem('applicationData', JSON.stringify(applicationData));
+
+      showPage('payment-page');
+      paymentStandardSpan.textContent = sessionStorage.getItem('selectedStandard');
+    });
+
+    // Payment form submit
+    paymentForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const method = document.getElementById('payment-method').value;
+      if (!method) {
+        alert('Please select a payment method.');
+        return;
+      }
+
+      // Simulate payment processing
+      const transactionId = 'TXN' + Date.now();
+
+      // Save payment info in sessionStorage (replace with backend API)
+      const paymentInfo = {
+        standard: sessionStorage.getItem('selectedStandard'),
+        method,
+        transactionId,
+      };
+      sessionStorage.setItem('paymentInfo', JSON.stringify(paymentInfo));
+
+      // Show confirmation page
+      confStandard.textContent = paymentInfo.standard;
+      confMethod.textContent = paymentInfo.method;
+      confTransaction.textContent = paymentInfo.transactionId;
+
+      showPage('payment-confirmation-page');
+    });
+
+    // Clear payment confirmation info
+    function clearPaymentConfirmation() {
+      confStandard.textContent = '';
+      confMethod.textContent = '';
+      confTransaction.textContent = '';
+      sessionStorage.removeItem('selectedStandard');
+      sessionStorage.removeItem('applicationData');
+      sessionStorage.removeItem('paymentInfo');
+      paymentForm.reset();
+      detailsForm.reset();
+      standardForm.reset();
+    }
+  </script>
+</body>
+</html>

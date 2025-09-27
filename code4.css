@@ -1,0 +1,1047 @@
+/* --- Decorative Header Background --- */
+.header-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2196f3 0%, #152cdd 50%, #0b0361 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+  filter: drop-shadow(0 4px 6px rgba(203, 212, 216, 0.15));
+  animation: headerBgMove 20s linear infinite;
+}
+
+@keyframes headerBgMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.header-bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  filter: blur(40px);
+  animation: floatShapes 15s ease-in-out infinite alternate;
+}
+
+.shape1 {
+  width: 100px;
+  height: 100px;
+  background: #2196f3;
+  top: 20px;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape2 {
+  width: 220px;
+  height: 220px;
+  background: #9c88e9;
+  top: 90px;
+  right: 15%;
+  animation-delay: 5s;
+}
+
+.shape3 {
+  width: 150px;
+  height: 150px;
+  background: #9c88e9;
+  top: 100px;
+  left: 40%;
+  animation-delay: 10s;
+}
+
+@keyframes floatShapes {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-20px) translateX(15px); }
+}
+
+/* --- Footer --- */
+.footer {
+  background: linear-gradient(90deg, #2196f3, #25279a, #0b0782);
+  color: rgb(148, 149, 208);
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 0 0 12px 12px;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  flex: 1 1 200px;
+}
+
+.footer-contact a {
+  color: #fffde7;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: #322755;
+}
+
+/* --- Floating Help Button --- */
+#help-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #7974da;
+  color: #333;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(8, 16, 54, 0.6);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+}
+
+#help-btn:hover {
+  background-color: #2a2592b8;
+  box-shadow: 0 8px 16px rgba(190, 176, 237, 0.8);
+}
+
+/* --- Modal Styles --- */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background-color: rgba(33, 150, 243, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1100;
+  padding: 1rem;
+  animation: fadeInModal 0.4s ease forwards;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 10%;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  text-align: center;
+}
+
+.modal-content h3 {
+  color: #1976d2;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.modal-content p {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.modal-content a {
+  color: #637baf;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.modal-content a:hover {
+  color: #515ea1;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #6069c9;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #c92c8d;
+}
+
+/* --- Button Animations --- */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.btn-primary:hover::before {
+  left: 125%;
+}
+
+/* --- Input Focus Glow --- */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 10px #2196f3aa;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Home Buttons Gradient --- */
+.home-btn {
+  background: linear-gradient(45deg, #2196f3, #332b90);
+  box-shadow: 0 4px 12px rgba(204, 126, 235, 0.5);
+  transition: background ,0.4s ease, box-shadow 0.4s ease;
+}
+
+.home-btn:hover,
+.home-btn:focus {
+  background: linear-gradient(45deg, #6592e0, #450dbf);
+  box-shadow: 0 6px 16px rgba(114, 82, 230, 0.7);
+}
+
+/* --- Progress Bar Animation --- */
+.progress-bar-fill {
+  background: linear-gradient(90deg, #2196f3, #704cd3, #07006e);
+  box-shadow: 0 0 10px #b675dcaa inset;
+  transition: width 0.7s ease-in-out;
+}
+
+/* --- Add subtle shadow to pages --- */
+.page {
+  box-shadow: 0 12px 30px rgba(33, 150, 243, 0.15);
+  border: 1px solid #e0e0e0;
+}
+
+/* --- Add subtle hover effect on form inputs --- */
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: #6bbfcc;
+  box-shadow: 0 0 8px #6bbfcc;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Add subtle animation to form labels --- */
+.form-group label {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.form-group input:focus + label,
+.form-group select:focus + label,
+.form-group textarea:focus + label {
+  color: #2196f3;
+}
+
+/* --- Responsive tweaks for footer --- */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* --- Add subtle bounce animation to help button --- */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+#help-btn {
+  animation: bounce 3s infinite;
+}
+
+/* --- Add background pattern to auth container --- */
+.auth-container {
+  background: linear-gradient(135deg, #2196f3 0%, #7d6de4 50%, #3e07bf 100%);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Override form inputs inside auth container for contrast */
+.auth-container input,
+.auth-container select,
+.auth-container textarea {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border-color: #fbc02d;
+}
+
+.auth-container input::placeholder,
+.auth-container select::placeholder,
+.auth-container textarea::placeholder {
+  color: #666;
+}
+
+/* --- Add subtle shadow to buttons in auth container --- */
+.auth-container .btn-primary {
+  box-shadow: 0 6px 12px rgba(251, 192, 45, 0.7);
+}
+
+/* --- Add icon inside input fields (using background images) --- */
+input#email {
+  background: url('https://cdn-icons-png.flaticon.com/512/561/561127.png') no-repeat 10px center;
+  background-size: 20px 20px;
+  padding-left: 40px;
+}
+
+input#password {
+  background: url('https://cdn-icons-png.flaticon.com/512/3064/3064155.png') no-repeat 10px center;
+  background-size: 20px 20px;
+  padding-left: 40px;
+}
+
+input#name {
+  background: url('https://cdn-icons-png.flaticon.com/512/1077/1077114.png') no-repeat 10px center;
+  background-size: 20px 20px;
+  padding-left: 40px;
+}
+
+/* --- Add subtle shadow and border radius to forms --- */
+.form {
+  background: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* --- Add subtle animation to page transitions --- */
+.page {
+  animation: fadeSlideIn 0.6s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Add hover effect on back buttons --- */
+.btn-back {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-back::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(251, 192, 45, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: -1;
+}
+
+.btn-back:hover::after {
+  width: 200%;
+  height: 500%;
+}
+
+/* --- Add subtle shadow to feedback textarea --- */
+#feedback-summary {
+  box-shadow: inset 0 0 8px #2196f3aa;
+  transition: box-shadow 0.3s ease;
+}
+
+#feedback-summary:focus {
+  box-shadow: inset 0 0 12px #d93deeaa;
+}
+
+/* --- Add subtle animation to progress bar fill --- */
+.progress-bar-fill {
+  animation: progressFill 2s ease forwards;
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  100% { width: 40%; }
+}
+
+/* --- Add subtle hover effect on file inputs --- */
+input[type="file"]:hover {
+  background-color: #fff9c4;
+  border-color: #c83c9e;
+  box-shadow: 0 0 8px #e03dc7aa;
+}
+
+/* --- Add subtle shadow to payment confirmation --- */
+.confirmation-content {
+  background: #fffde7;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 20px rgba(124, 128, 228, 0.3);
+}
+
+/* --- Add subtle animation to confirmation message --- */
+.confirmation-message p {
+  animation: fadeInText 1.5s ease forwards;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #aa2fd3;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Add subtle hover effect on links --- */
+a {
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #586ad3;
+  text-decoration: underline;
+}
+
+/* --- Add subtle shadow to home welcome text --- */
+#user-name {
+  color: #2196f3;
+  font-weight: 900;
+  text-shadow: 1px 1px 3px #6536ca;
+}
+
+/* --- Add subtle animation to home buttons --- */
+.home-btn {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.home-btn:hover {
+  transform: translateZ(10px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(54, 28, 113, 0.6);
+}
+
+/* --- Add subtle shadow to dashboard user info --- */
+#dashboard-page p strong {
+  color: #120d73;
+  text-shadow: 0 0 3px #532dfb;
+}
+
+/* --- Add subtle animation to feedback form button --- */
+#dashboard-page .btn-primary {
+  animation: pulseBtn 3s infinite;
+}
+
+@keyframes pulseBtn {
+  0%, 100% { box-shadow: 0 0 10px #2196f3; }
+  50% { box-shadow: 0 0 20px #e372df; }
+}
+
+/* --- Add subtle animation to visit school form --- */
+#visit-school-page form {
+  animation: floatForm 6s ease-in-out infinite alternate;
+}
+
+@keyframes floatForm {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* --- Add subtle animation to select standard form --- */
+#select-standard-page form {
+  animation: floatForm 5s ease-in-out infinite alternate-reverse;
+}
+
+/* --- Add subtle animation to details & documents form --- */
+#details-documents-page form {
+  animation: floatForm 7s ease-in-out infinite alternate;
+}
+
+/* --- Add subtle animation to payment form --- */
+#payment-page form {
+  animation: floatForm 4s ease-in-out infinite alternate-reverse;
+}
+
+/* --- Add subtle animation to payment confirmation */
+
+
+/* styles.css */
+
+/* Reset and base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #339a7d;
+  color: #333;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Utility classes */
+.hidden {
+  display: none !important;
+}
+
+.page {
+  padding: 1.5rem;
+  max-width: 200px;
+  margin: 6rem auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* Headers */
+.header, .sub-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #4caf50;
+  padding-bottom: 2rem;
+}
+
+.header h1, .sub-header h2 {
+  color: #080807; /* Dark green */
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.btn-logout, .btn-back {
+  background-color: #d6581d; /* Yellow */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 300;
+  cursor: pointer;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.btn-logout:hover, .btn-back:hover {
+  background-color: #f9a825;
+}
+
+/* Containers */
+.container {
+  padding: 0 1rem;
+}
+
+/* Auth Container */
+.auth-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 1.5rem;
+  color: #1976d2; /* Blue */
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* Forms */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #c8e6c9; /* Light green */
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px #4caf50aa;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #388e3c;
+}
+
+/* Links */
+#toggle-text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+#toggle-text a {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#toggle-text a:hover {
+  text-decoration: underline;
+}
+
+/* Home Page Options */
+.home-options {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.home-btn {
+  background-color: #2196f3; /* Blue */
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1 1 200px;
+  max-width: 250px;
+}
+
+.home-btn:hover,
+.home-btn:focus {
+  background-color: #1565c0;
+}
+
+/* Confirmation message */
+.confirmation-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #e8f5e9; /* Light green background */
+  border-left: 5px solid #4caf50;
+  color: #2e7d32;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .home-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-btn {
+    max-width: 100%;
+  }
+
+  .auth-container {
+    margin: 2rem 1rem;
+  }
+
+  .page {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+/* Additional styles for better student form representation */
+
+/* Form section titles */
+.sub-header h2 {
+  font-size: 2rem;
+  color: #1b5e20; /* Darker green */
+  margin-bottom: 1rem;
+  border-bottom: 3px solid #81c784; /* Light green */
+  padding-bottom: 0.3rem;
+}
+
+/* Highlight required fields */
+label::after {
+  content: " *";
+  color: #782a2a; /* Red */
+  font-weight: 700;
+}
+
+/* Input focus with smooth transition */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #388e3c;
+  box-shadow: 0 0 8px #66bb6a88;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* File input styling */
+input[type="file"] {
+  border: 2px dashed #a5d6a7;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #4caf50;
+  font-weight: 600;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="file"]:hover {
+  background-color: #e8f5e9;
+  border-color: #4caf50;
+}
+
+/* Show selected file name */
+input[type="file"]::file-selector-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #388e3c;
+}
+
+/* Progress bar container */
+.progress-bar-container {
+  width: 100%;
+  background-color: #c8e6c9;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem 0 2rem 0;
+  height: 20px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Progress bar fill */
+.progress-bar-fill {
+  height: 100%;
+  background-color: #4caf50;
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Validation message */
+.validation-message {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Button disabled state */
+.btn-primary:disabled,
+.home-btn:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+  color: #eee;
+}
+
+/* Smooth button hover */
+.btn-primary:hover:not(:disabled),
+.home-btn:hover:not(:disabled) {
+  box-shadow: 0 4px 12px rgba(76,175,80,0.4);
+}
+
+/* Add subtle fade-in animation for pages */
+.page {
+  animation: fadeInPage 0.5s ease forwards;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatForm {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* --- Add subtle animation to payment confirmation --- */
+
+
+/* Responsive tweaks for form inputs */
+@media (max-width: 480px) {
+  .form-group input,
+  .form-group select,
+  .form-group textarea,
+  input[type="file"] {
+    font-size: 1rem;
+  }
+}
+
+/* Add icon placeholders for inputs (optional) */
+/* Example: Add a user icon for name input */
+.form-group label[for="name"]::before {
+  content: "👤 ";
+  font-size: 1.1rem;
+}
+
+/* Add phone icon for phone input */
+.form-group label[for="phone"]::before {
+  content: "📞 ";
+  font-size: 1.1rem;
+}
+
+/* Add calendar icon for date input */
+.form-group label[for="visit-date"]::before {
+  content: "📅 ";
+  font-size: 1.1rem;
+}
+
+/* Add clock icon for time input */
+.form-group label[for="visit-time"]::before {
+  content: "⏰ ";
+  font-size: 1.1rem;
+}
+
+
+
+
+
+/* Base font and spacing improvements */
+body, html {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px; /* increased from default 16px */
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+  background: #afc4e4; /* light neutral background */
+  color: #222;
+  min-height: 100vh;
+}
+
+/* Increase page padding and margin */
+.page {
+  max-width: 900px;
+  margin: 3rem auto; /* increased margin */
+  padding: 2.5rem 3rem; /* increased padding */
+  background: rgb(166, 185, 231);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Headings bigger and spaced */
+h1, h2, h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+/* Paragraph spacing */
+p {
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+}
+
+/* Form inputs bigger */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  font-size: 1.1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+}
+
+/* Buttons bigger */
+.btn-primary, .home-btn, .btn-logout, .btn-back {
+  font-size: 1.2rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+
+
+/* Futuristic header with gradient background and hover effect */
+.futuristic-header {
+  background: linear-gradient(135deg, #2196f3, #fbc02d, #d32f2f);
+  background-size: 300% 300%;
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.6);
+  transition: background-position 5s ease infinite;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.futuristic-header:hover {
+  background-position: 100% 50%;
+}
+
+/* Add subtle animated shapes in header */
+.futuristic-header::before,
+.futuristic-header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.15;
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.futuristic-header::before {
+  width: 200px;
+  height: 200px;
+  background: #2196f3;
+  top: -50px;
+  left: -50px;
+  animation: floatUpDown 6s ease-in-out infinite alternate;
+}
+
+.futuristic-header::after {
+  width: 250px;
+  height: 250px;
+  background: #d32f2f;
+  bottom: -80px;
+  right: -80px;
+  animation: floatUpDown 8s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatUpDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+
+
+body {
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+  color: #fff;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay for readability */
+  z-index: -1;
+}
