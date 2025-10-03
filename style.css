@@ -1,0 +1,516 @@
+/* ===========================================
+   GLOBAL RESET & BASE
+   =========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+   height: 100%;
+  min-height: 100vh;
+
+  /* background image setup */
+  background-image: url('https://tse4.mm.bing.net/th/id/OIP.ZsfIDj35nmRA-scqtrwrhAHaE7?rs=1&pid=ImgDetMain&o=7&rm=3');
+  background-repeat: no-repeat;       /* don't repeat the image */
+  background-size: cover;             /* make it fill the screen */
+  background-position: center center; /* keep it centered */
+  background-attachment: fixed;       /* optional: stays fixed when scrolling */
+  
+  /* text styles */
+  font-size: 14px;
+  color: #f0f0f0;
+  
+
+}
+
+
+/* Hide by default */
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 20px 40px;
+  background: rgba(14, 13, 13, 0.15);
+
+  box-shadow: 0 8px 32px rgba(97, 97, 103, 0.37);
+  border:solid;
+  color: #e0e0e000; 
+}
+.page:not(.hidden) {
+  display: block;
+}
+.hidden {
+  display: none !important;
+}
+
+/* ===========================================
+   LOGIN / AUTH PAGE
+   =========================================== */
+#login-page {
+  width: 250px;
+  margin: 5vh auto;
+  padding: 30px 40px;
+  text-align: center;
+}
+
+.school-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #172d75;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #220d61;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: #172d75;
+  color: #e9e5e5;
+  outline: none;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #ede5e5;
+}
+
+.btn-primary {
+  width: 35%;
+  padding: 10px 12px;
+  margin-top: 10px;
+  margin-right: 70%;
+  font-size: 1rem;
+  font-weight: 50%;
+  background: #f0f0f0;
+  color: #182848;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn-primary:hover {
+  background: #d4d4d4;
+}
+
+#toggle-text {
+  margin-right: 70%;
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #2b2727;
+}
+#toggle-text a {
+  color: #12386f;
+  font-weight: 600;
+  text-decoration: none;
+}
+#toggle-text a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================================
+   HEADER + NAVIGATION
+   =========================================== */
+.header {
+  margin-bottom: 30px;
+}
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#logout-btn {
+  background: #d32f2f;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  color: #e2e2e9;
+  font-weight: 600;
+  cursor: pointer;
+}
+#logout-btn:hover {
+  background: #b71c1c;
+}
+.nav-bar {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+.nav-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(168, 126, 126, 0.25);
+  color: #efecec;
+  font-weight: 600;
+  cursor: pointer;
+}
+.nav-btn:hover {
+  background: rgba(157, 146, 146, 0.45);
+}
+
+/* ===========================================
+   HOME PAGE
+   =========================================== */
+.welcome {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #182848;
+
+}
+.features-section {
+  background: #39212190;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  
+ 
+}
+.features-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #82b1ff;
+}
+.features-list{
+  color:#82b1ff ;
+}
+.home-box{
+  
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 1px 0px 40px 0;
+  
+
+}
+
+/* ===========================================
+   DASHBOARD PAGE
+   =========================================== */
+.container{
+  width: 500px;
+  height: 400px;
+ 
+
+}
+
+.heading-dash{
+  color: #12386f;
+}
+
+
+
+   #dashboard-page {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 30px 40px;
+}
+.user-profile-box {
+  background: rgba(118, 7, 7, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #200909;
+}
+.btn-back{
+position: absolute;       /* fix relative to page */
+  top: 20px;
+  right: 20px;
+  background: #d32f2f;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+.visit-info{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #172d75;
+}
+/* ===========================================
+   FEEDBACK PAGE
+   =========================================== */
+#feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#feedback-form input,
+#feedback-form textarea {
+  background: rgba(64, 60, 60, 0.25);
+}
+#feedback-form .btn-primary {
+  width: 110px;
+}
+.btn-back{
+position: absolute;       /* fix relative to page */
+  top: 20px;
+  right: 20px;
+  background: #d32f2f;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+/* ===========================================
+   VISIT SCHOOL PAGE
+   =========================================== */
+#visit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: inherit;
+}
+
+.sub-header {
+  color: #172d75;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Back button */
+#visit-school-page .btn-back {
+  position: absolute;       /* fix relative to page */
+  top: 20px;
+  right: 20px;
+  background: #d32f2f;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+#visit-school-page .btn-back:hover {
+  background: #b71c1c;
+}
+
+/* Form row (side-by-side fields) */
+#visit-form .form-row {
+  display: flex;
+  gap: 20px;
+}
+
+#visit-form .form-row .form-group {
+  flex: 1;
+}
+
+/* Inputs and textarea */
+#visit-form input,
+#visit-form textarea {
+  background: rgba(125, 114, 169, 0.25);
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.95rem;
+  color: #020305;
+}
+
+#visitor-name::placeholder,
+#visitor-email::placeholder,
+#visit-purpose::placeholder {
+  color: #020305;
+}
+
+/* Description + submit button row */
+#visit-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#visit-form .btn-primary {
+  width: 180px;
+  background: #f0f0f0;
+  color: #182848;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+#visit-form .btn-primary:hover {
+  background: #d4d4d4;
+}
+
+/* ===========================================
+   SELECT STANDARD PAGE
+   =========================================== */
+#standard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#standard-select {
+  background: rgba(255,255,255,0.25);
+  color: #110303;
+}
+#standard-form .btn-primary {
+  width: 120px;
+}
+
+/* ===========================================
+   DOCUMENTS PAGE
+   =========================================== */
+#details-form {
+  display: grid;
+  flex-direction: column;
+  gap: 15px;
+  overflow: auto;
+  width: 100%;       /* Set desired width */
+  height: 300px;
+  padding: 10px;
+  
+}
+#details-form input,
+#details-form textarea {
+  background: rgba(157, 151, 151, 0.25);
+}
+#details-form .btn-primary {
+  width: 120px;
+}
+#student-name::placeholder{
+  color:#172d75
+}
+
+#student-name{
+  color:#172d75
+}
+#birthdate::placeholder{
+  color:#172d75
+}
+#birthdate{
+  color:#172d75
+}
+
+#father-name::placeholder{
+  color:#172d75
+}
+#father-name{
+  color:#172d75
+}
+
+#father-mobile::placeholder{
+  color:#172d75
+}
+#father-mobile{
+  color:#172d75
+}
+#mother-name::placeholder{
+  color:#172d75
+}
+#mother-name{
+  color:#172d75
+}
+#mother-mobile::placeholder{
+  color:#172d75
+}
+#mother-mobile{
+  color:#172d75
+}
+.color-font{
+  color: #172d75;
+}
+#parents-email::placeholder{
+  color:#172d75
+}
+#parents-email{
+  color:#172d75
+}
+#permanent-address::placeholder{
+  color:#172d75
+}
+#permanent-address{
+  color:#172d75
+}
+#aadhaar-student::placeholder{
+  color:#172d75
+}
+#aadhaar-parents{
+  color:#172d75
+}
+#aadhaar-parents::placeholder{
+  color:#172d75
+}
+#aadhaar-parentsaadhaar-parents{
+  color:#172d75
+}
+#mother-mobile::placeholder{
+  color:#172d75
+}
+#mother-mobile{
+  color:#172d75
+}
+
+
+/* ===========================================
+   PAYMENT PAGE
+   =========================================== */
+.payment-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+}
+.payment-btn {
+  flex: 1 1 45%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  cursor: pointer;
+}
+.payment-btn:hover {
+  background: rgba(255,255,255,0.45);
+}
+.payment-btn.selected {
+  background: #82b1ff;
+  color: #182848;
+}
+
+/* ===========================================
+   CONFIRMATION PAGE
+   =========================================== */
+.confirmation-content {
+  margin-top: 20px;
+}
+.confirmation-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(130,177,255,0.15);
+  border-radius: 10px;
+  color: #0d3e8b;
+  font-weight: 600;
+  text-align: center;
+}
