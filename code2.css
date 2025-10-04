@@ -1,0 +1,618 @@
+/* ===========================================
+   GLOBAL RESET & BASE
+   =========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100vh;
+
+  /* background image setup */
+  background-image: url('https://tse4.mm.bing.net/th/id/OIP.ZsfIDj35nmRA-scqtrwrhAHaE7?rs=1&pid=ImgDetMain&o=7&rm=3');
+  background-repeat: no-repeat;       /* don't repeat the image */
+  background-size: cover;             /* make it fill the screen */
+  background-position: center center; /* keep it centered */
+  background-attachment: fixed;       /* optional: stays fixed when scrolling */
+  
+  /* text styles */
+  font-size: 14px;
+  color: #f0f0f0;
+}
+
+/* Hide by default */
+.page {
+  width: 100%;
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+  background: rgba(14, 13, 13, 0.15);
+  box-shadow: 0 8px 32px rgba(97, 97, 103, 0.37);
+  border: solid;
+  color: #f0f0f0;
+}
+
+.page:not(.hidden) {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Container for all pages */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Desktop default */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .header-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .nav-bar {
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .nav-btn {
+    width: 100%;
+    font-size: 14px;
+  }
+  
+  .page {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 10px;
+  }
+  
+  .container {
+    padding: 0 10px;
+  }
+}
+
+/* ===========================================
+   LOGIN / AUTH PAGE
+   =========================================== */
+#login-page {
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  margin: 5vh auto;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.school-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #172d75;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #220d61;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: #172d75;
+  color: #e9e5e5;
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #ede5e5;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #f0f0f0;
+  color: #182848;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #d4d4d4;
+}
+
+#toggle-text {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #2b2727;
+  text-align: center;
+}
+
+#toggle-text a {
+  color: #12386f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#toggle-text a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================================
+   HEADER + NAVIGATION
+   =========================================== */
+.header {
+  margin-bottom: 30px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logout-btn {
+  background: #d32f2f;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  color: #e2e2e9;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#logout-btn:hover {
+  background: #b71c1c;
+}
+
+.nav-bar {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(168, 126, 126, 0.25);
+  color: #efecec;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+  min-width: 120px;
+}
+
+.nav-btn:hover {
+  background: rgba(157, 146, 146, 0.45);
+}
+
+/* ===========================================
+   REGISTER PAGE
+   =========================================== */
+#register-page {
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  margin: 5vh auto;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#register-page .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+#register-page label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: #220d61;
+}
+
+#register-page input[type="text"],
+#register-page input[type="email"],
+#register-page input[type="password"] {
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 6px;
+  background: #172d75;
+  color: #e9e5e5;
+  outline: none;
+}
+
+#register-page input::placeholder {
+  color: #ede5e5;
+}
+
+#register-page .btn-primary {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #f0f0f0;
+  color: #182848;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#register-page .btn-primary:hover {
+  background: #d4d4d4;
+}
+
+#toggle-login-text {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #2b2727;
+  text-align: center;
+}
+
+#toggle-login-text a {
+  color: #12386f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#toggle-login-text a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================================
+   HOME PAGE
+   =========================================== */
+.welcome {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #182848;
+}
+
+.features-section {
+  background: #39212190;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.features-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #82b1ff;
+}
+
+.features-list {
+  color: #82b1ff;
+}
+
+.home-box {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 1px 0 40px 0;
+}
+
+.scroll-home {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* ===========================================
+   DASHBOARD PAGE
+   =========================================== */
+.heading-dash {
+  color: #12386f;
+}
+
+#dashboard-page {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 30px;
+}
+
+.user-profile-box {
+  background: rgba(118, 7, 7, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #200909;
+}
+
+.btn-back {
+  background: #d32f2f;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.btn-back:hover {
+  background: #b71c1c;
+}
+
+.visit-info {
+  color: #172d75;
+  margin-bottom: 20px;
+}
+
+/* ===========================================
+   FEEDBACK PAGE
+   =========================================== */
+#feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#feedback-form input,
+#feedback-form textarea {
+  background: rgba(64, 60, 60, 0.25);
+}
+
+#feedback-form .btn-primary {
+  width: 150px;
+  align-self: flex-start;
+}
+
+/* ===========================================
+   VISIT SCHOOL PAGE
+   =========================================== */
+#visit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sub-header {
+  color: #172d75;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+/* Form row (side-by-side fields) */
+#visit-form .form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+#visit-form .form-row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Inputs and textarea */
+#visit-form input,
+#visit-form textarea {
+  background: rgba(125, 114, 169, 0.25);
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.95rem;
+  color: #020305;
+  width: 100%;
+}
+
+#visitor-name::placeholder,
+#visitor-email::placeholder,
+#visit-purpose::placeholder {
+  color: #020305;
+}
+
+/* Description + submit button row */
+#visit-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#visit-form .btn-primary {
+  width: 180px;
+  background: #f0f0f0;
+  color: #182848;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#visit-form .btn-primary:hover {
+  background: #d4d4d4;
+}
+
+/* ===========================================
+   SELECT STANDARD PAGE
+   =========================================== */
+#standard-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#standard-select {
+  background: rgba(255,255,255,0.25);
+  color: #110303;
+}
+
+#standard-form .btn-primary {
+  width: 120px;
+  align-self: flex-start;
+}
+
+/* ===========================================
+   DOCUMENTS PAGE
+   =========================================== */
+#details-documents-page {
+  width: 100%;
+}
+
+#details-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: auto;
+  width: 100%;
+  padding: 10px;
+}
+
+#details-form input,
+#details-form textarea {
+  background: rgba(157, 151, 151, 0.25);
+}
+
+#details-form .btn-primary {
+  width: 120px;
+  align-self: flex-start;
+}
+
+#student-name::placeholder,
+#birthdate::placeholder,
+#father-name::placeholder,
+#father-mobile::placeholder,
+#mother-name::placeholder,
+#mother-mobile::placeholder,
+#parents-email::placeholder,
+#permanent-address::placeholder,
+#aadhaar-student::placeholder,
+#aadhaar-parents::placeholder {
+  color: #172d75;
+}
+
+#student-name,
+#birthdate,
+#father-name,
+#father-mobile,
+#mother-name,
+#mother-mobile,
+#parents-email,
+#permanent-address,
+#aadhaar-student,
+#aadhaar-parents {
+  color: #172d75;
+}
+
+.color-font {
+  color: #172d75;
+}
+
+/* ===========================================
+   PAYMENT PAGE
+   =========================================== */
+.payment-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.payment-btn {
+  flex: 1 1 45%;
+  min-width: 120px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  cursor: pointer;
+}
+
+.payment-btn:hover {
+  background: rgba(255,255,255,0.45);
+}
+
+.payment-btn.selected {
+  background: #82b1ff;
+  color: #182848;
+}
+
+/* ===========================================
+   CONFIRMATION PAGE
+   =========================================== */
+.confirmation-content {
+  margin-top: 20px;
+}
+
+.confirmation-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(130,177,255,0.15);
+  border-radius: 10px;
+  color: #0d3e8b;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 480px) {
+  .payment-btn {
+    flex: 1 1 100%;
+  }
+  
+  .btn-primary {
+    font-size: 0.9rem;
+    padding: 8px 10px;
+  }
+  
+  .nav-btn {
+    min-width: 100%;
+  }
+}
