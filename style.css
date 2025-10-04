@@ -388,7 +388,7 @@ position: absolute;       /* fix relative to page */
   gap: 15px;
   overflow: auto;
   width: 100%;       /* Set desired width */
-  height: 300px;
+  height: 100%;
   padding: 10px;
   
 }
@@ -514,3 +514,4 @@ position: absolute;       /* fix relative to page */
   font-weight: 600;
   text-align: center;
 }
+
