@@ -82,6 +82,7 @@ html, body {
   padding: 30px 40px;
   text-align: center;
   appearance:7px;
+   position: relative;
 }
 
 .school-name {
@@ -628,3 +629,4 @@ position: absolute;       /* fix relative to page */
   font-weight: 600;
   text-align: center;
 }
+
