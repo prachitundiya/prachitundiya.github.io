@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canwas Public School - Admission Portal</title>
+  <link rel="stylesheet" href="code2.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- Loading Spinner -->
+  <div id="loading-spinner" class="loading-spinner hidden"></div>
+
+  <!-- Live Chat Widget -->
+  <div id="chat-widget" class="chat-widget">
+    <div class="chat-header">
+      <span>Admission Help</span>
+      <button id="chat-close" class="chat-close">&times;</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-message bot-message">
+        Hello! How can I help you with the admission process?
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="Type your message...">
+      <button id="chat-send"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <button id="chat-toggle" class="chat-toggle">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <!-- LOGIN PAGE -->
+  <div id="login-page" class="page">
+    <div class="header-row">
+      <h1 class="school-name">Canwas Public School</h1>
+    </div>
+    <main class="container">
+      <form id="login-form" class="form" novalidate>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" name="password" placeholder="Password" required minlength="6" />
+          <div class="password-strength hidden">
+            <div class="strength-bar"></div>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" id="auth-submit">
+          <span class="btn-text">Login</span>
+          <div class="btn-spinner hidden"></div>
+        </button>
+      </form>
+      <p id="toggle-text">Don't have an account? <a href="#" id="toggle-to-register">Register here</a></p>
+    </main>
+  </div>
+
+  <!-- REGISTER PAGE -->
+  <div id="register-page" class="page hidden">
+    <div class="header-row">
+      <h1 class="school-name">Canwas Public School</h1>
+    </div>
+    <main class="container">
+      <form id="register-form" class="form" novalidate>
+        <div class="form-group">
+          <label for="reg-name">Full Name *</label>
+          <input type="text" id="reg-name" name="reg-name" placeholder="Full Name" required />
+        </div>
+
+        <div class="form-group">
+          <label for="reg-email">Email *</label>
+          <input type="email" id="reg-email" name="reg-email" placeholder="Email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="reg-password">Password *</label>
+          <input type="password" id="reg-password" name="reg-password" placeholder="Password" required minlength="6" />
+          <div class="password-strength">
+            <div class="strength-bar"></div>
+            <div class="strength-text">Password strength: <span id="strength-value">None</span></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="reg-confirm-password">Confirm Password *</label>
+          <input type="password" id="reg-confirm-password" name="reg-confirm-password" placeholder="Confirm Password" required minlength="6" />
+        </div>
+
+        <button type="submit" class="btn-primary" id="register-submit">
+          <span class="btn-text">Register</span>
+          <div class="btn-spinner hidden"></div>
+        </button>
+      </form>
+
+      <p id="toggle-login-text">
+        Already have an account? <a href="#" id="toggle-to-login">Login here</a>
+      </p>
+    </main>
+  </div>
+
+  <!-- HOME PAGE -->
+ <!-- HOME PAGE -->
+<div id="home-page" class="page hidden">
+  <div class="home-box">
+    <header class="header">
+      <div class="header-row">
+        <h1 class="school-name">Canwas Public School</h1>
+        <button id="logout-btn" class="btn-logout">Logout</button>
+      </div>
+      <nav class="nav-bar">
+        <button class="nav-btn" id="dashboard-btn"><span class="nav-icon">📊</span> Dashboard</button>
+        <button class="nav-btn" id="visit-school-btn"><span class="nav-icon">🏫</span> Visit School</button>
+        <button class="nav-btn" id="select-standard-btn"><span class="nav-icon">📚</span> Select Standard</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h2 class="welcome">Welcome, <span id="user-name" class="user-name">Guest</span></h2>
+      
+      <!-- Interactive Features Section -->
+      <section class="interactive-features">
+        <div class="stats-cards">
+          <div class="stat-card">
+            <h3>Admissions Open</h3>
+            <div class="counter" data-target="156">0</div>
+            <p>Current Applications</p>
+          </div>
+          <div class="stat-card">
+            <h3>School Rating</h3>
+            <div class="stars">★★★★☆</div>
+            <p>4.2/5 Based on 234 reviews</p>
+          </div>
+          <div class="stat-card">
+            <h3>Days Remaining</h3>
+            <div class="counter" data-target="28">0</div>
+            <p>For Admission Process</p>
+          </div>
+        </div>
+        
+        <div class="quick-actions">
+          <button class="action-btn" onclick="showVirtualTour()">
+            <i class="fas fa-school"></i> Virtual Tour
+          </button>
+          <button class="action-btn" onclick="downloadBrochure()">
+            <i class="fas fa-file-pdf"></i> Download Brochure
+          </button>
+          <button class="action-btn" id="faq-chat-btn">
+            <i class="fas fa-question-circle"></i> Admission Help
+          </button>
+        </div>
+      </section>
+
+      <!-- FAQ Chat Widget -->
+      <div id="faq-chat-widget" class="faq-chat-widget hidden">
+        <div class="faq-chat-header">
+          <h3>Admission Help Desk</h3>
+          <button class="faq-chat-close" id="faq-chat-close">&times;</button>
+        </div>
+        <div class="faq-chat-messages" id="faq-chat-messages">
+          <div class="faq-message bot-message">
+            Hello! I'm here to help you with the admission process. You can ask me about:
+            <br>• Admission procedure
+            <br>• Required documents
+            <br>• Fee structure
+            <br>• Payment options
+            <br>• Application status
+            <br><br>How can I assist you today?
+          </div>
+        </div>
+        <div class="faq-chat-input">
+          <input type="text" id="faq-chat-input" placeholder="Ask about admission process...">
+          <button id="faq-chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+
+      <!-- Single scrollable content area -->
+      <section class="features-section">
+        <h3>Features and Importance</h3>
+        <ul class="features-list">
+          <li><i class="fas fa-chalkboard-teacher"></i> Experienced and dedicated faculty</li>
+          <li><i class="fas fa-laptop-house"></i> Modern classrooms and facilities</li>
+          <li><i class="fas fa-heart"></i> Focus on holistic development</li>
+          <li><i class="fas fa-futbol"></i> Extracurricular activities and sports</li>
+          <li><i class="fas fa-users"></i> Strong community and values</li>
+        </ul>
+        
+        <div class="school-gallery">
+          <h3>Our Campus</h3>
+          <div class="gallery-container">
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="School Building">
+            </div>
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1588072432836-4b4f32c93e4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Classroom">
+            </div>
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Library">
+            </div>
+            <div class="gallery-item">
+              <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Sports">
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-school">
+          <h3>About Canwas Public School</h3>
+          <p>Canwas Public School is a well-established English medium institution dedicated to providing high-quality education to students from diverse backgrounds.</p>
+          <p>We believe that education goes beyond textbooks and exams — it is about shaping character, building confidence, and preparing students for life.</p>
+          
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-header">
+                Our Mission and Vision <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>Our mission is to nurture students who are knowledgeable, confident, responsible, and socially aware. We prepare them not just for academic success, but to become good citizens and lifelong learners.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header">
+                Facilities <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>Our campus is designed to provide a modern, safe, and inspiring environment. We have well-equipped classrooms, science and computer labs, a library, sports facilities, and dedicated spaces for arts and music.</p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header">
+                Academic Excellence <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="accordion-content">
+                <p>The school follows a structured curriculum aligned with educational boards to ensure academic excellence at all levels. We focus on conceptual understanding and application-based learning.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+  <!-- DASHBOARD PAGE -->
+  <div id="dashboard-page" class="page hidden">
+    <section class="container">
+      <h2 class="heading-dash">User Profile</h2>
+      <button class="btn-back" id="dashboard-back-btn">Back</button>
+      <div class="user-profile-box">
+        <p><strong>Name:</strong> <span id="dash-name">N/A</span></p>
+        <p><strong>Email:</strong> <span id="dash-email">N/A</span></p>
+        <p><strong>Member Since:</strong> <span id="member-since">N/A</span></p>
+      </div>
+      
+      <div class="application-status">
+        <h3>Application Status</h3>
+        <div class="status-timeline">
+          <div class="timeline-step completed">
+            <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+            <div class="step-label">Registered</div>
+          </div>
+          <div class="timeline-step active">
+            <div class="step-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="step-label">Application</div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+            <div class="step-label">Review</div>
+          </div>
+          <div class="timeline-step">
+            <div class="step-icon"><i class="fas fa-award"></i></div>
+            <div class="step-label">Approved</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="visit-info">
+        <h3>Visit Requests</h3>
+        <div id="visit-requests-list">
+          No visit requests submitted yet
+        </div>
+      </div>
+
+      <h3 class="heading-dash">Feedback & Support</h3>
+      <button id="dashboard-next" class="btn-primary">Submit Feedback</button>
+    </section>
+  </div>
+
+  <!-- FEEDBACK PAGE -->
+  <div id="feedback-page" class="page hidden">
+    <main class="container">
+      <h2>Feedback</h2>
+      <button id="feedback-back-btn" class="btn-back">Back</button>
+
+      <form id="feedback-form" class="form" novalidate>
+        <div class="form-group">
+          <label for="feedback-email">Email *</label>
+          <input type="email" id="feedback-email" name="feedback-email" placeholder="Your email" required />
+        </div>
+        <div class="form-group">
+          <label for="feedback-type">Feedback Type *</label>
+          <select id="feedback-type" name="feedback-type" required>
+            <option value="">-- Select Type --</option>
+            <option value="general">General Feedback</option>
+            <option value="admission">Admission Process</option>
+            <option value="technical">Technical Issue</option>
+            <option value="suggestion">Suggestion</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="feedback-summary">Summary *</label>
+          <textarea id="feedback-summary" name="feedback-summary" rows="4" placeholder="Your feedback or support query" required></textarea>
+          <div class="char-count"><span id="feedback-char-count">0</span>/500 characters</div>
+        </div>
+        <button type="submit" class="btn-primary">
+          <span class="btn-text">Send Feedback</span>
+          <div class="btn-spinner hidden"></div>
+        </button>
+      </form>
+    </main>
+  </div>
+
+  <!-- VISIT SCHOOL PAGE -->
+  <div id="visit-school-page" class="page hidden">
+    <main class="container">
+      <header class="sub-header">
+        <h2>Schedule a Visit</h2>
+        <button class="btn-back" id="visit-school-back">Back</button>
+      </header><br>
+
+      <form id="visit-form" class="form grid-layout" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="visitor-name">Full Name *</label>
+            <input type="text" id="visitor-name" name="visitor-name" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label for="visit-date">Preferred Date *</label>
+            <input type="date" id="visit-date" name="visit-date" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="visitor-email">Email *</label>
+            <input type="email" id="visitor-email" name="visitor-email" placeholder="Your email" required />
+          </div>
+          <div class="form-group">
+            <label for="visit-time">Preferred Time *</label>
+            <input type="time" id="visit-time" name="visit-time" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="visit-purpose">Purpose of Visit</label>
+          <textarea id="visit-purpose" name="visit-purpose" rows="3" placeholder="Briefly describe your purpose"></textarea>
+          <div class="char-count"><span id="visit-char-count">0</span>/200 characters</div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">
+            <span class="btn-text">Submit Request</span>
+            <div class="btn-spinner hidden"></div>
+          </button>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <!-- SELECT STANDARD PAGE -->
+  <div id="select-standard-page" class="page hidden">
+    <main class="container">
+      <header class="sub-header">
+        <h2>Select Standard</h2>
+        <button class="btn-back" id="standard-back">Back</button>
+      </header>
+      <form id="standard-form" class="form" novalidate>
+        <div class="form-group">
+          <label for="standard-select">Choose Standard *</label>
+          <select id="standard-select" name="standard-select" required>
+            <option value="">-- Select --</option>
+            <option value="1">Standard 1</option>
+            <option value="2">Standard 2</option>
+            <option value="3">Standard 3</option>
+            <option value="4">Standard 4</option>
+            <option value="5">Standard 5</option>
+            <option value="6">Standard 6</option>
+            <option value="7">Standard 7</option>
+            <option value="8">Standard 8</option>
+            <option value="9">Standard 9</option>
+            <option value="10">Standard 10</option>
+            <option value="11">Standard 11</option>
+            <option value="12">Standard 12</option>
+          </select>
+        </div>
+        <div class="fee-info hidden" id="fee-info">
+          <h3>Fee Structure</h3>
+          <div class="fee-breakdown">
+            <p>Admission Fee: <span id="admission-fee">₹5,000</span></p>
+            <p>Annual Charges: <span id="annual-charges">₹12,000</span></p>
+            <p>Total: <span id="total-fee">₹17,000</span></p>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">Next</button>
+      </form>
+    </main>
+  </div>
+
+  <!-- DETAILS & DOCUMENTS PAGE -->
+  <div id="details-documents-page" class="page hidden">
+    <main class="container">
+      <header class="sub-header">
+        <h2>Student & Parent Details + Documents</h2>
+        <button class="btn-back" id="details-back">Back</button>
+      </header>
+      <form id="details-form" class="form" enctype="multipart/form-data" novalidate>
+        <div class="form-group">
+          <label for="student-name">Student Name *</label>
+          <input type="text" id="student-name" name="student-name" placeholder="Full name" required />
+        </div>
+        <div class="form-group">
+          <label for="birthdate">Birthdate *</label>
+          <input type="date" id="birthdate" name="birthdate" required />
+        </div>
+        <div class="form-group">
+          <label for="father-name">Father's Name *</label>
+          <input type="text" id="father-name" name="father-name" placeholder="Full name" required />
+        </div>
+        <div class="form-group">
+          <label for="father-mobile">Father's Mobile Number *</label>
+          <input type="tel" id="father-mobile" name="father-mobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" required />
+        </div>
+        <div class="form-group">
+          <label for="mother-name">Mother's Name *</label>
+          <input type="text" id="mother-name" name="mother-name" placeholder="Full name" required />
+        </div>
+        <div class="form-group">
+          <label for="mother-mobile">Mother's Mobile Number *</label>
+          <input type="tel" id="mother-mobile" name="mother-mobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" required />
+        </div>
+        <div class="color-font">
+          <div class="form-group">
+            <label for="parents-email">Parents' Email ID *</label>
+            <input type="email" id="parents-email" name="parents-email" placeholder="Email address" required />
+          </div>
+          <div class="form-group">
+            <label for="permanent-address">Permanent Address (District, Taluka, City) *</label>
+            <textarea id="permanent-address" name="permanent-address" placeholder="Enter full address" rows="3" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="aadhaar-student">Aadhaar Card of Student (Encrypted) *</label>
+            <input type="text" id="aadhaar-student" name="aadhaar-student" placeholder="Encrypted Aadhaar" minlength="12" maxlength="12" required />
+          </div>
+          <div class="form-group">
+            <label for="aadhaar-parents">Aadhaar Card of Parents (Encrypted) *</label>
+            <input type="text" id="aadhaar-parents" name="aadhaar-parents" placeholder="Encrypted Aadhaar" minlength="12" maxlength="12" required />
+          </div>
+          <div class="form-group file-upload-group">
+            <label for="student-photo">Student Photo (JPG/PNG, max 5MB) *</label>
+            <div class="file-upload">
+              <input type="file" id="student-photo" name="student-photo" accept=".jpg,.jpeg,.png" required />
+              <label for="student-photo" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i> Choose File
+              </label>
+              <span class="file-name">No file chosen</span>
+            </div>
+          </div>
+          <div class="form-group file-upload-group">
+            <label for="leaving-certificate">Leaving Certificate (PDF/JPG/PNG, max 5MB) *</label>
+            <div class="file-upload">
+              <input type="file" id="leaving-certificate" name="leaving-certificate" accept=".pdf,.jpg,.jpeg,.png" required />
+              <label for="leaving-certificate" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i> Choose File
+              </label>
+              <span class="file-name">No file chosen</span>
+            </div>
+          </div>
+          <div class="form-group file-upload-group">
+            <label for="birth-certificate">Birth Certificate (PDF/JPG/PNG, max 5MB) *</label>
+            <div class="file-upload">
+              <input type="file" id="birth-certificate" name="birth-certificate" accept=".pdf,.jpg,.jpeg,.png" required />
+              <label for="birth-certificate" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i> Choose File
+              </label>
+              <span class="file-name">No file chosen</span>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">
+          <span class="btn-text">Next</span>
+          <div class="btn-spinner hidden"></div>
+        </button>
+      </form>
+    </main>
+  </div>
+
+  <!-- PAYMENT PAGE -->
+  <div id="payment-page" class="page hidden">
+    <main class="container">
+      <header class="sub-header">
+        <h2>Payment</h2>
+        <button class="btn-back" id="payment-back">Back</button>
+      </header>
+      <form id="payment-form" class="form" novalidate>
+        <p><strong>Standard Selected:</strong> <span id="payment-standard">N/A</span></p>
+        <p><strong>Total Amount:</strong> <span id="payment-amount">₹17,000</span></p>
+        
+        <div class="payment-group">
+          <button type="button" class="payment-btn" data-method="Credit Card">
+            <i class="fas fa-credit-card"></i> Credit Card
+          </button>
+          <button type="button" class="payment-btn" data-method="Debit Card">
+            <i class="fas fa-credit-card"></i> Debit Card
+          </button>
+        </div>
+        <div class="payment-group">
+          <button type="button" class="payment-btn" data-method="Google Pay">
+            <i class="fab fa-google-pay"></i> Google Pay
+          </button>
+          <button type="button" class="payment-btn" data-method="PhonePe">
+            <i class="fas fa-mobile-alt"></i> PhonePe
+          </button>
+          <button type="button" class="payment-btn" data-method="Bhim Pay">
+            <i class="fas fa-university"></i> Bhim Pay
+          </button>
+          <button type="button" class="payment-btn" data-method="Paytm">
+            <i class="fas fa-wallet"></i> Paytm
+          </button>
+        </div>
+        <div class="payment-group">
+          <button type="button" class="payment-btn" data-method="Cash on Pay">
+            <i class="fas fa-money-bill-wave"></i> Cash on Pay
+          </button>
+        </div>
+        <input type="hidden" id="payment-method" name="payment-method" required />
+        <button type="submit" class="btn-primary">
+          <span class="btn-text">Pay Now</span>
+          <div class="btn-spinner hidden"></div>
+        </button>
+      </form>
+    </main>
+  </div>
+
+  <!-- PAYMENT CONFIRMATION PAGE -->
+  <div id="payment-confirmation-page" class="page hidden">
+    <main class="container">
+      <header class="sub-header">
+        <h2>Payment Confirmation</h2>
+        <button class="btn-back" id="confirmation-back">Back to Home</button>
+      </header>
+      <section class="confirmation-content">
+        <div class="confirmation-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Payment Successful!</h3>
+        <div class="confirmation-details">
+          <p><strong>Standard:</strong> <span id="conf-standard">N/A</span></p>
+          <p><strong>Payment Method:</strong> <span id="conf-method">N/A</span></p>
+          <p><strong>Amount Paid:</strong> <span id="conf-amount">N/A</span></p>
+          <p><strong>Transaction ID:</strong> <span id="conf-transaction">N/A</span></p>
+          <p><strong>Date:</strong> <span id="conf-date">N/A</span></p>
+        </div>
+        <div class="confirmation-message">
+          <p>Your payment has been processed successfully. You will receive a confirmation email shortly.</p>
+          <p>Your application is now under review. We will contact you within 3-5 working days.</p>
+        </div>
+        <div class="confirmation-actions">
+          <button id="confirmation-home" class="btn-primary">Back to Home</button>
+          <button id="confirmation-print" class="btn-secondary">
+            <i class="fas fa-print"></i> Print Receipt
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FAQ PAGE -->
+  <div id="faq-page" class="page hidden">
+    <main class="container">
+      <header class="sub-header">
+        <h2>Frequently Asked Questions</h2>
+        <button class="btn-back" id="faq-back">Back</button>
+      </header>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">
+            What documents are required for admission?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>You will need the following documents:</p>
+            <ul>
+              <li>Birth Certificate</li>
+              <li>Previous school leaving certificate</li>
+              <li>Aadhaar card of student and parents</li>
+              <li>Passport size photographs</li>
+              <li>Address proof</li>
+            </ul>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What is the fee structure?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Fee structure varies by standard. Generally, it includes:</p>
+            <ul>
+              <li>Admission fee: ₹5,000 (one-time)</li>
+              <li>Annual charges: ₹12,000</li>
+              <li>Tuition fee: ₹40,000-60,000 per annum (depending on standard)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            What are the school timings?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>School timings are from 8:00 AM to 2:30 PM for all standards.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            Is transportation available?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, we provide bus transportation services covering most areas in the city. Additional charges apply.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content container">
+      <div class="footer-logo">Canwas Public School</div>
+      <div class="footer-links">
+        <a href="#" id="footer-faq">FAQ</a>
+        <a href="#" id="footer-contact">Contact</a>
+        <a href="#" id="footer-privacy">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        <p>Contact: <a href="mailto:info@canwas.edu">info@canwas.edu</a></p>
+        <p>Phone: +91-XXXXX-XXXXX</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="Login.js"></script>
+</body>
+</html>
